@@ -1,4 +1,3 @@
-## Benefits
-
-- explicit list of override-able symbols
-- no black magic in cmake nor linker
+```
+mkdir build && cd build && cmake --graphviz=test.dot .. && cmake .. && make && dotty test.dot
+```
