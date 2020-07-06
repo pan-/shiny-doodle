@@ -1,0 +1,4 @@
+add_library(freescale_xpresso_k64f)
+target_sources(freescale_xpresso_k64f PRIVATE mcu.cpp)
+target_link_libraries(freescale_xpresso_k64f mcu)
+
