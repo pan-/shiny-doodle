@@ -9,6 +9,6 @@ struct boo {
     bool (*bar)(uint32_t v);
 };
 
-extern struct boo b_test;
+extern const struct boo b_test;
 
 #endif

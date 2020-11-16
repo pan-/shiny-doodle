@@ -1,4 +1,4 @@
 #include "b.h"
 
-extern struct boo c_test;
+extern const struct boo c_test;
 

@@ -5,7 +5,7 @@ void b_foo(uint32_t v) {
     printf("b %u\n", v);
 }
 
-struct boo b_test = {
+const struct boo b_test = {
     .foo = b_foo,
     .bar = NULL
 };

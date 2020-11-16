@@ -4,7 +4,6 @@
 
 #include "b.h"
 #include "c.h"
-#include "d.h"
 
 long long current_timestamp() {
     struct timeval te;
@@ -14,34 +13,31 @@ long long current_timestamp() {
     return milliseconds;
 }
 
-void other(struct boo *d) {
-    d->foo(25);
-}
-
-void yet_another(void *d) {
-    struct boo *b = (struct boo*)d;
-    b->foo(44);
+void some_function(const void *d) {
+    const struct boo *b = (const struct boo *)d;
+    uint32_t v = (uint32_t)rand() % 100;
+    b->foo(v);
     // XXX: If this is commented out, bar is never used
     /*if (b->bar != NULL) {
         printf("so ? %s\n", b->bar(12)?"true":"false");
     }*/
 }
 
-struct boo *array[] = {
-    &b_test, &c_test,
-    /*
-    &d_test
-    // */
+static const struct boo *array[] = {
+    &b_test, &c_test
 };
 
 int main(void) {
     srand(current_timestamp());
-
-    b_test.foo((uint32_t)rand() % 100);
-
     uint32_t idx = (uint32_t)rand() % (sizeof(array) / sizeof(struct boo *));
 
-    other(array[idx]);
-    yet_another(array[idx]);
+    /* lto works in that case
+    some_function(&b_test);
+    // */
+
+    //* but not when using an array (const so known at compile time)
+    some_function(array[idx]);
+    // */
 }
 
+// vim: ts=4:sw=4

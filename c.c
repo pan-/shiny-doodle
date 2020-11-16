@@ -12,7 +12,7 @@ bool c_bar(uint32_t v) {
     return v > a;
 }
 
-struct boo c_test = {
+const struct boo c_test = {
     .foo = c_foo,
     .bar = c_bar
 };
