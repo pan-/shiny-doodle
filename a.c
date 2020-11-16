@@ -23,7 +23,7 @@ void some_function(const void *d) {
     }*/
 }
 
-static const struct boo *array[] = {
+static const struct boo * const array[] = {
     &b_test, &c_test
 };
 
