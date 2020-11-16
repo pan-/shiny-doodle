@@ -32,7 +32,16 @@ int main(void) {
     uint32_t idx = (uint32_t)rand() % (sizeof(array) / sizeof(struct boo *));
 
     /* lto works in that case
-    some_function(&b_test);
+    const struct boo *b = NULL;
+    switch (idx) {
+        case 0:
+            b = &b_test;
+            break;
+        case 1:
+            b = &c_test;
+            break;
+    }
+    some_function(b);
     // */
 
     //* but not when using an array (const so known at compile time)
