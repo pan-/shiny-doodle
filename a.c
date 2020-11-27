@@ -17,6 +17,7 @@ void some_function(const void *d) {
     const struct boo *b = (const struct boo *)d;
     uint32_t v = (uint32_t)rand() % 100;
     b->foo(v);
+    b->baz(v);
     // XXX: If this is commented out, bar is never used
     /*if (b->bar != NULL) {
         printf("so ? %s\n", b->bar(12)?"true":"false");
@@ -31,7 +32,7 @@ int main(void) {
     srand(current_timestamp());
     uint32_t idx = (uint32_t)rand() % (sizeof(array) / sizeof(struct boo *));
 
-    /* lto works in that case
+    //lto works in that case
     const struct boo *b = NULL;
     switch (idx) {
         case 0:
@@ -42,10 +43,10 @@ int main(void) {
             break;
     }
     some_function(b);
-    // */
+    // 
 
     //* but not when using an array (const so known at compile time)
-    some_function(array[idx]);
+    //some_function(array[idx]);
     // */
 }
 

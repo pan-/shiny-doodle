@@ -7,6 +7,7 @@
 struct boo {
     void (*foo)(uint32_t v);
     bool (*bar)(uint32_t v);
+    void (*baz)(uint32_t v);
 };
 
 extern const struct boo b_test;

@@ -12,8 +12,13 @@ bool c_bar(uint32_t v) {
     return v > a;
 }
 
+void c_baz(uint32_t v) {
+    printf("c baz %u\n", v);
+}
+
 const struct boo c_test = {
     .foo = c_foo,
-    .bar = c_bar
+    .bar = c_bar,
+    .baz = c_baz
 };
 
